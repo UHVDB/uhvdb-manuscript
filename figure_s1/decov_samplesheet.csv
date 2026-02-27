@@ -1,0 +1,2 @@
+sample,source_db,project,group,biosample,acc,fastq_1,fastq_2,fna
+devoc,DECOV,,decov,,,,,/mmfs1/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/uhvdb-manuscript/figure_s1/DEVoC.fasta
