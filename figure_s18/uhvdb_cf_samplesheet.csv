@@ -1,0 +1,15 @@
+sample,source_db,project,group,biosample,acc,fastq_1,fastq_2,fna
+cf_metag,CF_METAG,,cf_metag,,,,,/mmfs1/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/uhvdb-manuscript/figure_s16/cf_metag_contigs.fa.gz
+lipuma_metag,CF_LIPUMA,,lipuma_metag,,,,,/mmfs1/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/uhvdb-manuscript/figure_s16/lipuma_metag_contigs.fa.gz
+staphyloccocus_pg3,UHBDB,staphyloccocus_pg3,staphyloccocus_pg3,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-05/Staphylococcus
+pseudomonas_pg3,UHBDB,pseudomonas_pg3,pseudomonas_pg3,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-05/Pseudomonas
+haemophilus_pg3,UHBDB,haemophilus_pg3,haemophilus_pg3,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-05/Haemophilus
+stenotrophomonas_pg3,UHBDB,stenotrophomonas_pg3,stenotrophomonas_pg3,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-05/Stenotrophomonas
+burkholderia_pg3,UHBDB,burkholderia_pg3,burkholderia_pg3,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-05/Burkholderia
+achromobacter_pg3,UHBDB,achromobacter_pg3,achromobacter_pg3,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-05/Achromobacter
+staphyloccocus_motus,UHBDB,staphyloccocus_motus,staphyloccocus_motus,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-11/Staphylococcus
+pseudomonas_motus,UHBDB,pseudomonas_motus,pseudomonas_motus,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-11/Pseudomonas
+haemophilus_motus,UHBDB,haemophilus_motus,haemophilus_motus,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-11/Haemophilus
+stenotrophomonas_motus,UHBDB,stenotrophomonas_motus,stenotrophomonas_motus,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-11/Stenotrophomonas
+burkholderia_motus,UHBDB,burkholderia_motus,burkholderia_motus,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-11/Burkholderia
+achromobacter_motus,UHBDB,achromobacter_motus,achromobacter_motus,,,,,/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/UHVDB/toolkit/databases/uhbdb/2026-03-11/Achromobacter
