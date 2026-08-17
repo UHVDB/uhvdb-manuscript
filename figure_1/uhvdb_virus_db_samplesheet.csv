@@ -1,0 +1,2 @@
+sample,source_db,project,group,biosample,acc,fastq_1,fastq_2,fna
+uhvdb_virus_db,UHVDB,,uhvdb_virus_db,,,,,/mmfs1/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/uhvdb-manuscript/figure_1/virus_db_non_lq_viruses.fna.gz

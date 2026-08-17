@@ -1,0 +1,2 @@
+sample,source_db,project,group,biosample,acc,fastq_1,fastq_2,fna
+uhgv_hq_hc,UHGV,,uhgv_hq_hc,,,,,/mmfs1/gscratch/pedslabs_hoffman/carsonjm/CFPhageome/repos/uhvdb-manuscript/figure_1/uhgv_hq_plus.fna.gz
