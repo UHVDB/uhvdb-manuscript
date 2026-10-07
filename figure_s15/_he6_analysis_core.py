@@ -318,6 +318,45 @@ def enriched_prop_curve(frame: pd.DataFrame, thresholds) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def with_viral_gene_frac(df: pl.DataFrame) -> pl.DataFrame:
+    """Story-20 derived feature: CheckV viral_genes / (viral_genes + host_genes)."""
+    return df.with_columns(
+        (
+            pl.col("viral_genes").cast(pl.Float64, strict=False)
+            / (
+                pl.col("viral_genes").cast(pl.Float64, strict=False)
+                + pl.col("host_genes").cast(pl.Float64, strict=False)
+            )
+        ).alias("viral_gene_frac")
+    )
+
+
+def pr_curve_for_plot(y_true, proba, min_predicted: int = 20):
+    """PR coordinates for figures.
+
+    sklearn appends (recall=0, precision=1) with no threshold, and the first
+    few high-score isotonic ties have too few calls for a stable precision.
+    Drop those, then extend left to recall=0 at the first stable precision so
+    the curve does not start with a tiny-N cliff. Report AUPRC from
+    average_precision_score on the full scores, not this trim.
+    """
+    y = np.asarray(y_true).astype(int)
+    p = np.asarray(proba, dtype=float)
+    prec, rec, _thr = precision_recall_curve(y, p)
+    prec, rec = np.asarray(prec[:-1], dtype=float), np.asarray(rec[:-1], dtype=float)
+    n_pos = max(int(y.sum()), 1)
+    with np.errstate(divide="ignore", invalid="ignore"):
+        n_pred = rec * n_pos / prec
+    keep = np.isfinite(n_pred) & (n_pred >= min_predicted)
+    if keep.any():
+        rec, prec = rec[keep], prec[keep]
+    # sklearn returns decreasing recall; extend to R=0 at the first *stable*
+    # high-score precision (last remaining point), not the prevalence end.
+    rec = np.r_[rec, 0.0]
+    prec = np.r_[prec, prec[-1]]
+    return rec, prec
+
+
 def main() -> None:
     meta = joblib.load(MODEL_DIR / "phage_model_metadata_full.joblib")
     pipeline = joblib.load(MODEL_DIR / "phage_activity_model_full.joblib")
@@ -329,7 +368,8 @@ def main() -> None:
             f"Expected Caudoviricetes model; got ictv_class_filter={ictv_class_filter!r}"
         )
     print(
-        f"features={len(numeric_cols)}  thresh_90={thr:.4f}  "
+        f"features={len(numeric_cols)}  feature_set={meta.get('feature_set')}  "
+        f"learner={meta.get('learner')}  thresh_90={thr:.4f}  "
         f"ictv_class_filter={ictv_class_filter}"
     )
 
@@ -734,7 +774,7 @@ def main() -> None:
                 ]
             )
             gene_prop = gene_prop_enr
-        return (
+        return with_viral_gene_frac(
             base.join(_quality, on="species_cluster_id", how="left")
             .join(_meta_sp, on="species_cluster_id", how="left")
             .join(
@@ -865,7 +905,7 @@ def main() -> None:
 
     # --- Plots: PR / ROC / score dist / prop called ---
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.2))
-    prec_c, rec_c, _ = precision_recall_curve(y_true, proba)
+    rec_c, prec_c = pr_curve_for_plot(y_true, proba)
     fpr, tpr, _ = roc_curve(y_true, proba)
     pred_at_thr = (proba >= thr).astype(int)
     thr_prec, thr_rec, _, _ = precision_recall_fscore_support(
